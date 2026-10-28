@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="es" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SysPower: reinicio físico remoto de equipos críticos | Alkes</title>
+
+<meta name="description" content="Apaga, enciende y reinicia a distancia routers, DVR, switches y servidores desde el navegador. Corte físico por relé, cinco salidas, hardware incluido en la renta y sin anticipo. Pide informes.">
+<meta name="author" content="Alkes">
+<meta name="theme-color" content="#061c6b">
+<meta name="format-detection" content="telephone=no">
+<link rel="canonical" href="https://syspower.alkes.mx/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SysPower">
+<meta property="og:url" content="https://syspower.alkes.mx/">
+<meta property="og:title" content="SysPower: reinicio físico remoto de equipos críticos | Alkes">
+<meta property="og:description" content="Reinicia a distancia routers, DVR, switches y servidores con corte físico de energía, desde el navegador y sin VPN.">
+<meta property="og:image" content="https://syspower.alkes.mx/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SysPower, reinicio físico remoto de equipos críticos">
+<meta property="og:locale" content="es_MX">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SysPower: reinicio físico remoto de equipos críticos | Alkes">
+<meta name="twitter:description" content="Reinicia a distancia routers, DVR, switches y servidores con corte físico de energía, desde el navegador y sin VPN.">
+<meta name="twitter:image" content="https://syspower.alkes.mx/assets/img/og-image.png">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="keywords" content="reinicio remoto de equipos, reiniciar router a distancia, reinicio físico remoto, control remoto de energía, relevador remoto, PDU inteligente, reinicio de DVR, reinicio de servidores, IoT ESP32, monitoreo de equipos críticos, soporte TI remoto, sistema en la nube, México, Guadalajara, Alkes">
+<meta name="application-name" content="SysPower">
+<meta name="apple-mobile-web-app-title" content="SysPower">
+<meta name="creator" content="Gustavo Quintero">
+<meta name="publisher" content="Alkes">
+<meta name="classification" content="Software empresarial en la nube">
+<meta name="language" content="es-MX">
+<meta name="geo.region" content="MX-JAL">
+<meta name="geo.placename" content="Guadalajara, Jalisco, México">
+<meta name="geo.position" content="20.6597;-103.3496">
+<meta name="ICBM" content="20.6597, -103.3496">
+<link rel="alternate" hreflang="es-MX" href="https://syspower.alkes.mx/">
+<link rel="alternate" hreflang="es" href="https://syspower.alkes.mx/">
+<link rel="alternate" hreflang="x-default" href="https://syspower.alkes.mx/">
+<link rel="alternate" type="text/markdown" title="Resumen para modelos de lenguaje" href="https://syspower.alkes.mx/llms.txt">
+<link rel="sitemap" type="application/xml" href="https://syspower.alkes.mx/sitemap.xml">
+<link rel="author" href="https://gustavoquintero.dev/">
+<meta property="og:image:secure_url" content="https://syspower.alkes.mx/assets/img/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta name="twitter:image:alt" content="Vista de SysPower, software en la nube de Alkes">
+<link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+<link rel="preload" href="assets/fonts/lexend-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/syspower.css">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://alkes.mx/#org","name":"Alkes","url":"https://alkes.mx","email":"soporte@alkes.mx","telephone":"+523339460097","sameAs":["https://www.facebook.com/alkes.mx","https://www.instagram.com/alkes.mx","https://www.linkedin.com/company/alkes-mx","https://www.tiktok.com/@alkes.mx"],"alternateName":["Alkes Software y Soluciones TI","Alkes TI"],"description":"Empresa de software y soluciones TI en Guadalajara, Jalisco. Desarrolla y opera sistemas en la nube para empresas mexicanas: ERP con CFDI 4.0, pendientes con IA, control de asistencia, mantenimiento y reinicio remoto de equipos.","logo":{"@type":"ImageObject","url":"https://alkes.mx/assets/img/logo_alkes.png"},"address":{"@type":"PostalAddress","addressLocality":"Guadalajara","addressRegion":"Jalisco","addressCountry":"MX"},"areaServed":{"@type":"Country","name":"México"},"founder":{"@id":"https://gustavoquintero.dev/#persona"},"foundingLocation":{"@type":"Place","name":"Guadalajara, Jalisco, México"},"contactPoint":{"@type":"ContactPoint","contactType":"Ventas y soporte","telephone":"+523339460097","email":"soporte@alkes.mx","areaServed":"MX","availableLanguage":["es"]},"knowsAbout":["Software empresarial","ERP","Facturación electrónica CFDI 4.0","Gestión de pendientes","Control de asistencia","Mantenimiento preventivo","Internet de las cosas","Inteligencia artificial"]},{"@type":"WebSite","@id":"https://syspower.alkes.mx/#web","name":"SysPower","url":"https://syspower.alkes.mx/","inLanguage":"es-MX","publisher":{"@id":"https://alkes.mx/#org"},"description":"SysPower: reinicio físico remoto de equipos críticos | Alkes","creator":{"@id":"https://gustavoquintero.dev/#persona"},"copyrightHolder":{"@id":"https://alkes.mx/#org"}},{"@type":"SoftwareApplication","@id":"https://syspower.alkes.mx/#app","name":"SysPower","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"Reinicio físico remoto de equipos críticos: controlador con cinco salidas de 120 V y panel web para apagar, encender y reiniciar routers, DVR, switches y servidores.","url":"https://syspower.alkes.mx/","inLanguage":"es-MX","image":"https://syspower.alkes.mx/assets/img/og-image.png","publisher":{"@id":"https://alkes.mx/#org"},"applicationSubCategory":"Control remoto de energía e IoT","keywords":"reinicio remoto de equipos, reiniciar router a distancia, reinicio físico remoto, control remoto de energía, relevador remoto, PDU inteligente, reinicio de DVR, reinicio de servidores, IoT ESP32, monitoreo de equipos críticos, soporte TI remoto, sistema en la nube, México, Guadalajara, Alkes","countriesSupported":"MX","availableOnDevice":"Computadora, teléfono y tableta","browserRequirements":"Navegador web moderno con conexión a internet","provider":{"@id":"https://alkes.mx/#org"},"creator":{"@id":"https://gustavoquintero.dev/#persona"},"author":{"@id":"https://gustavoquintero.dev/#persona"},"isAccessibleForFree":false,"mainEntityOfPage":{"@id":"https://syspower.alkes.mx/#pagina"},"softwareVersion":"2.2.0","releaseNotes":"https://syspower.alkes.mx/#novedades","featureList":["Tres acciones, un clic, desde cualquier lugar","Apagar: corta la energía al instante","Encender: restaura cuando estés listo","Reiniciar: ciclo completo con un clic","Solo se corta lo que tú indicas","Cinco salidas, cada equipo con su nombre","Conexión por Ethernet o WiFi","Relés industriales","Quién, qué y cuándo, siempre a la vista","Multiusuario con roles","Historial y trazabilidad","Avisos y notas en cada controlador"],"screenshot":[{"@type":"ImageObject","url":"https://syspower.alkes.mx/assets/img/ficha.jpg","caption":"Ficha de un controlador SysPower con sus cinco puertos y los botones de energía","width":1568,"height":621},{"@type":"ImageObject","url":"https://syspower.alkes.mx/assets/img/estado.jpg","caption":"Estado en vivo de los controladores SysPower: en línea, último reporte y cada puerto","width":1568,"height":621},{"@type":"ImageObject","url":"https://syspower.alkes.mx/assets/img/historial.jpg","caption":"Historial de acciones de SysPower con usuario, acción y fecha","width":1568,"height":621}]},{"@type":"FAQPage","@id":"https://syspower.alkes.mx/#faq","mainEntity":[{"@type":"Question","name":"¿Qué es SysPower?","acceptedAnswer":{"@type":"Answer","text":"Un controlador que se instala en tu sitio, con cinco salidas de 120 V a 10 A, y un panel web desde el que apagas, enciendes y reinicias a distancia los equipos conectados: routers, DVR, switches y servidores pequeños."}},{"@type":"Question","name":"¿Qué pasa si un equipo está completamente trabado y no responde?","acceptedAnswer":{"@type":"Answer","text":"Es el escenario donde SysPower más ayuda. El corte es físico: el relé interrumpe la corriente del equipo sin pasar por su sistema. No importa si está congelado o colgado."}},{"@type":"Question","name":"¿Cuánto cuesta?","acceptedAnswer":{"@type":"Answer","text":"SysPower no tiene planes publicados. Escríbenos a soporte@alkes.mx o llama al 333 946 0097: nos cuentas cuántos sitios y equipos quieres controlar y te enviamos los informes."}},{"@type":"Question","name":"¿Qué incluye el servicio?","acceptedAnswer":{"@type":"Answer","text":"El controlador, el panel web, el historial, el soporte y las actualizaciones. El hardware va incluido en la renta, sin anticipo ni compra inicial del equipo, y tiene garantía."}},{"@type":"Question","name":"¿Qué necesita el sitio para la instalación?","acceptedAnswer":{"@type":"Answer","text":"Una toma eléctrica estándar de 120 V, conexión a internet por cable (Ethernet) o WiFi y espacio para el controlador cerca de los equipos. No requiere VPN ni abrir puertos hacia el exterior."}},{"@type":"Question","name":"¿Qué pasa si se cae el internet del sitio?","acceptedAnswer":{"@type":"Answer","text":"El controlador recibe las órdenes cuando reporta al panel. Si el enlace se cae, no llegan órdenes nuevas hasta que se restablece; entonces recuperas el control desde el panel."}},{"@type":"Question","name":"¿Qué pasa si se va la luz en el sitio?","acceptedAnswer":{"@type":"Answer","text":"Si se va la luz, el sistema se reinicia solo cuando vuelve la energía."}},{"@type":"Question","name":"¿Se puede operar el panel sin saber nada técnico?","acceptedAnswer":{"@type":"Answer","text":"Sí. Ves tus equipos con su nombre, eliges cuál reiniciar y listo. Cada usuario opera según su rol: administrador, operador o visor."}},{"@type":"Question","name":"¿Queda registro de quién hizo qué?","acceptedAnswer":{"@type":"Answer","text":"Sí. Cada acción de energía, cada cambio y cada nota queda en el historial del controlador, con quién, qué y cuándo."}},{"@type":"Question","name":"¿Qué pasa si el hardware se daña?","acceptedAnswer":{"@type":"Answer","text":"El servicio incluye garantía de hardware. Si el controlador falla, lo atendemos para restablecer la operación."}},{"@type":"Question","name":"Soy integrador o sysadmin. ¿Cómo encaja SysPower en mis instalaciones?","acceptedAnswer":{"@type":"Answer","text":"Lo instalas en el sitio del cliente y queda disponible para su operación diaria, con acceso multiusuario y roles. Para conocer el modelo de distribución, escríbenos."}},{"@type":"Question","name":"¿Puedo probarlo?","acceptedAnswer":{"@type":"Answer","text":"Sí, con el demo y sus credenciales de prueba. Su controlador es de ejemplo, sin un equipo real conectado."}}]},{"@type":"WebPage","@id":"https://syspower.alkes.mx/#pagina","url":"https://syspower.alkes.mx/","name":"SysPower: reinicio físico remoto de equipos críticos | Alkes","isPartOf":{"@id":"https://syspower.alkes.mx/#web"},"about":{"@id":"https://syspower.alkes.mx/#app"},"mainEntity":{"@id":"https://syspower.alkes.mx/#app"},"inLanguage":"es-MX","primaryImageOfPage":{"@type":"ImageObject","url":"https://syspower.alkes.mx/assets/img/og-image.png","width":1200,"height":630},"breadcrumb":{"@id":"https://syspower.alkes.mx/#migas"},"dateModified":"2026-10-28","publisher":{"@id":"https://alkes.mx/#org"}},{"@type":"BreadcrumbList","@id":"https://syspower.alkes.mx/#migas","itemListElement":[{"@type":"ListItem","position":1,"name":"Alkes","item":"https://alkes.mx/"},{"@type":"ListItem","position":2,"name":"SysPower","item":"https://syspower.alkes.mx/"}]},{"@type":"Person","@id":"https://gustavoquintero.dev/#persona","name":"Gustavo de Jesús Quintero Cerpa","alternateName":"Gustavo Quintero","jobTitle":"Fundador y desarrollador de Alkes","url":"https://gustavoquintero.dev/","sameAs":["https://www.linkedin.com/in/gustavo-quintero-81aa18169/","https://github.com/GustavoQuinteroC"],"address":{"@type":"PostalAddress","addressLocality":"Guadalajara","addressRegion":"Jalisco","addressCountry":"MX"}}]}</script>
+
+<script>
+(function () {
+    var r = document.documentElement;
+    r.className = r.className.replace('no-js', 'js');
+    try {
+        var t = localStorage.getItem('tema');
+        if (t === 'dark' || t === 'light') { r.setAttribute('data-theme', t); }
+    } catch (e) {}
+})();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<header class="nav" id="nav">
+    <div class="container nav__in">
+        <a class="brand" href="#inicio"><img class="logo logo--claro" src="assets/img/logo.png" alt="" width="34" height="34"><img class="logo logo--oscuro" src="assets/img/logo-blanco.png" alt="" width="34" height="34"><span>SysPower</span></a>
+        <a class="brand__by" href="https://alkes.mx">por <strong>Alkes</strong></a>
+        <nav class="nav__links" aria-label="Secciones">
+            <a class="nav__link" href="#producto">Producto</a>
+            <a class="nav__link" href="#capacidades">Cómo funciona</a>
+            <a class="nav__link" href="#casos">Casos</a>
+            <a class="nav__link" href="#informes">Informes</a>
+            <a class="nav__link" href="#preguntas">Preguntas</a>
+            <a class="nav__link" href="#novedades">Novedades</a>
+            <a class="nav__link" href="#contacto">Contacto</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="theme-toggle" type="button" data-theme-toggle aria-label="Cambiar tema"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><span class="theme-toggle__label"></span></button>            <a class="btn btn--line btn--sm" href="https://app.syspower.alkes.mx">Iniciar sesión</a>
+            <a class="btn btn--primary btn--sm" href="#informes">Pedir informes</a>
+        </div>
+        <button class="nav__burger" type="button" id="navToggle" aria-expanded="false" aria-controls="navPanel" aria-label="Abrir menú">
+            <svg class="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg>        </button>
+    </div>
+    <div class="nav__panel container" id="navPanel">
+        <a class="nav__link" href="#producto">Producto</a>
+        <a class="nav__link" href="#capacidades">Cómo funciona</a>
+        <a class="nav__link" href="#casos">Casos de uso</a>
+        <a class="nav__link" href="#informes">Informes</a>
+        <a class="nav__link" href="#preguntas">Preguntas</a>
+        <a class="nav__link" href="#novedades">Novedades</a>
+        <a class="nav__link" href="#contacto">Contacto</a>
+        <a class="nav__link" href="#ecosistema">Ecosistema Alkes</a>
+        <div class="nav__panel-actions">
+            <button class="theme-toggle" type="button" data-theme-toggle aria-label="Cambiar tema"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><span class="theme-toggle__label"></span></button>            <a class="btn btn--line" href="https://app.syspower.alkes.mx">Iniciar sesión</a>
+            <a class="btn btn--primary" href="#informes">Pedir informes</a>
+        </div>
+    </div>
+</header>
+
+<main id="main">
+
+<!-- Hero ------------------------------------------------------------------ -->
+<section class="hero" id="inicio">
+    <div class="container">
+        <div class="hero__grid">
+            <div class="hero__body">
+                <p class="eyebrow" data-reveal>Reinicio físico remoto para equipos críticos</p>
+                <h1 data-reveal>Tu router se congela a las 2 am. Lo reinicias en <em>segundos</em>.</h1>
+                <p class="lede" data-reveal>SysPower controla físicamente la energía de tus equipos críticos desde cualquier navegador. Sin visitas, sin VPN, sin esperas.</p>
+                <div class="row" data-reveal>
+                    <a class="btn btn--primary btn--lg" href="mailto:soporte@alkes.mx?subject=Informes%20de%20SysPower"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 7.6 5.3a1.6 1.6 0 0 0 1.8 0L20.5 7"/></svg>Pedir informes</a>
+                    <a class="btn btn--line btn--lg" href="https://app.syspower.alkes.mx" data-open-demo><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M10.5 9 15 12l-4.5 3Z"/></svg>Probar el demo</a>
+                </div>
+                <div class="row" data-reveal>
+                    <a class="link" href="mailto:soporte@alkes.mx?subject=Demostraci%C3%B3n%20guiada%20de%20SysPower">Agendar demostración guiada<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                    <a class="link" href="#novedades">Ver novedades<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </div>
+                <ul class="hero__facts" data-reveal>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Hardware incluido en la renta</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Sin anticipo</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Sin VPN</li>
+                </ul>
+            </div>
+            <div class="hero__aside" data-reveal>
+                <div class="scene" data-scene>
+  <svg class="scene__svg" viewBox="0 0 560 420" role="img" aria-label="Animación: a las 2 de la mañana el router de una oficina se congela; una persona abre SysPower en su celular, reinicia la salida del router, el equipo se apaga y se vuelve a encender, regresa el internet y la persona vuelve a dormir tranquila.">
+    <rect class="sy-wall" x="0" y="0" width="560" height="330"/><rect class="sy-wall2" x="0" y="252" width="560" height="78"/>
+    <rect class="sy-floor" x="0" y="330" width="560" height="90"/><path class="sy-line" d="M0 330H560"/>
+    <g class="sy-window"><rect class="sy-glass" x="24" y="22" width="122" height="100" rx="8"/><circle class="sy-st" style="--i:0" cx="44" cy="40" r="1.4"/><circle class="sy-st" style="--i:1" cx="110" cy="34" r="1.2"/><circle class="sy-st" style="--i:2" cx="128" cy="70" r="1.6"/><circle class="sy-st" style="--i:3" cx="86" cy="100" r="1.2"/><circle class="sy-st" style="--i:4" cx="160" cy="22" r="1.2"/><circle class="sy-st" style="--i:5" cx="190" cy="96" r="1.4"/><circle class="sy-st" style="--i:6" cx="270" cy="24" r="1.2"/><circle class="sy-st" style="--i:7" cx="300" cy="100" r="1.4"/>
+      <circle class="sy-moon" cx="64" cy="58" r="15"/><circle class="sy-glass" cx="71" cy="53" r="13"/>
+      <path class="sy-frame" d="M85 22V122M24 72H146"/><rect class="sy-frame" x="24" y="22" width="122" height="100" rx="8" style="fill:none"/></g>
+    <g class="sy-clock"><circle class="sy-cb" cx="230" cy="62" r="25"/><path class="sy-ct" d="M230 41v4M251 62h-4M230 83v-4M209 62h4"/><path class="sy-ch" d="M230 62l11-10"/><path class="sy-ch" d="M230 62V46"/><circle class="sy-ld" cx="230" cy="62" r="2.200"/></g>
+    <text class="sy-lbl" x="230" y="104" text-anchor="middle">2:00 am</text>
+    <g class="sy-z"><text class="sy-zt" style="--i:0" x="132" y="170">z</text><text class="sy-zt" style="--i:1" x="146" y="150">z</text><text class="sy-zt big" style="--i:2" x="162" y="126">Z</text></g>
+    <g class="sy-bed">
+      <rect class="sy-hb" x="20" y="190" width="26" height="140" rx="6"/><rect class="sy-pil" x="48" y="206" width="40" height="46" rx="14"/>
+      <rect class="sy-pj" x="66" y="214" width="48" height="72" rx="15"/>
+      <g class="sy-head"><ellipse class="p2-skin" cx="90" cy="195" rx="15.500" ry="17.500"/><ellipse class="p2-skin" cx="81.500" cy="197" rx="3.200" ry="4.200"/>
+        <path class="p2-hair" d="M74.500 197C73.500 184 79 177.500 90 177.500C101 177.500 106.500 185 105.500 192C101 186 95 184.500 89 184.500C83 184.500 78.500 188 77.500 197Z"/>
+        <ellipse class="p2-skin" cx="105.600" cy="197.500" rx="2.900" ry="3.300"/><circle class="p2-blush" cx="99" cy="202" r="3.400"/>
+        <path class="sy-ec" d="M94 195q3.500 3 7 0"/><g class="sy-eo"><ellipse class="p2-eyew" cx="98" cy="194.500" rx="3.100" ry="3.300"/><circle class="p2-iris" cx="99" cy="194.800" r="1.900"/><circle class="p2-eyew" cx="99.700" cy="194" r=".65"/></g><path class="p2-line" d="M94.500 189.500Q99 187.500 103.500 189"/>
+        <path class="sy-mn" d="M95 205h5"/><path class="sy-ms" d="M93.500 203.500Q98 208.500 103 203.500"/></g>
+      <rect class="sy-blk" x="44" y="268" width="210" height="50" rx="13"/><path class="sy-fold" d="M60 282H238M60 296H238" />
+      <g class="sy-arm"><path class="sc-sleeve sy-sl2" d="M106 226L138 240"/><path class="sc-skin" d="M138 240L160 232"/><circle class="sc-handc" cx="162" cy="231" r="6"/><g class="sy-ph"><rect class="sc-phone" x="160" y="208" width="14" height="26" rx="3"/><rect class="sy-scr" x="162.500" y="211" width="9" height="19" rx="1.500"/></g></g>
+      <rect class="sy-hb" x="20" y="318" width="236" height="14" rx="4"/>
+    </g>
+    <rect class="sy-cab" x="328" y="262" width="220" height="68" rx="6"/><rect class="sy-shelf" x="322" y="254" width="232" height="10" rx="3"/>
+    <path class="sy-cable" d="M491 246V256H440Q426 256 426 244"/>
+    <g class="sy-router"><rect class="sy-an" x="354" y="190" width="5" height="32" rx="2.500"/><rect class="sy-an" x="412" y="190" width="5" height="32" rx="2.500"/>
+      <rect class="sy-rb" x="346" y="220" width="82" height="34" rx="8"/>
+      <circle class="sy-rl r0" cx="366" cy="237" r="3.600"/><circle class="sy-rl r1" cx="380" cy="237" r="3.600"/><circle class="sy-rl r2" cx="394" cy="237" r="3.600"/><circle class="sy-rl r3" cx="408" cy="237" r="3.600"/>
+      <rect class="sy-dim" x="346" y="220" width="82" height="34" rx="8"/></g>
+    <g class="sy-wno"><path class="sy-wf" d="M366 180a24 24 0 0 1 40 0M372 190a15 15 0 0 1 28 0"/><circle class="sy-wd" cx="386" cy="198" r="3"/><path class="sy-x" d="M392 166l14 14M406 166l-14 14"/></g>
+    <g class="sy-wok"><path class="sy-wg" style="--i:0" d="M360 172a30 30 0 0 1 52 0"/><path class="sy-wg" style="--i:1" d="M368 182a20 20 0 0 1 36 0"/><path class="sy-wg" style="--i:2" d="M376 192a10 10 0 0 1 20 0"/><circle class="sy-wgd" cx="386" cy="199" r="3"/></g>
+    <g class="sy-box"><rect class="sy-bx" x="438" y="204" width="104" height="48" rx="10"/><text class="sy-bt" x="490" y="219" text-anchor="middle">SysPower</text><rect class="sy-sk" x="448" y="232" width="14" height="12" rx="3"/><circle class="sy-sl l0" cx="455" cy="227.500" r="2"/><rect class="sy-sk" x="466" y="232" width="14" height="12" rx="3"/><circle class="sy-sl l1" cx="473" cy="227.500" r="2"/><rect class="sy-sk" x="484" y="232" width="14" height="12" rx="3"/><circle class="sy-sl l2" cx="491" cy="227.500" r="2"/><rect class="sy-sk" x="502" y="232" width="14" height="12" rx="3"/><circle class="sy-sl l3" cx="509" cy="227.500" r="2"/><rect class="sy-sk" x="520" y="232" width="14" height="12" rx="3"/><circle class="sy-sl l4" cx="527" cy="227.500" r="2"/></g>
+    <g class="sy-on sc-tag"><rect class="sc-tagb" x="442" y="172" width="100" height="26" rx="13"/><circle class="sc-tagc" cx="458" cy="185" r="7.500"/><path class="sc-ck3" d="M454.500 185l2.500 2.500 4.500-5"/><text class="sc-txt2" x="471" y="190" style="font-size:11.5px">En línea</text></g>
+    <g class="sc-card">
+      <rect class="sc-cardb" x="326" y="8" width="222" height="148" rx="18"/>
+      <rect class="sc-logo" x="340" y="20" width="16" height="16" rx="4"/><path class="sc-ck2" d="M344 28l3 3 5-5.500"/>
+      <text class="sc-t0" x="362" y="32.500">SysPower</text><text class="sc-t3" x="534" y="32.500" text-anchor="end">Salidas</text>
+      <g class="sy-o o0"><circle class="sy-ob" cx="362" cy="68" r="12"/><path class="sy-op" d="M362 62v6M357.5 64a6.500 6.500 0 1 0 9 0"/></g><g class="sy-o o1"><circle class="sy-ob" cx="400" cy="68" r="12"/><path class="sy-op" d="M400 62v6M395.5 64a6.500 6.500 0 1 0 9 0"/></g><g class="sy-o o2"><circle class="sy-ob" cx="438" cy="68" r="12"/><path class="sy-op" d="M438 62v6M433.5 64a6.500 6.500 0 1 0 9 0"/></g><g class="sy-o o3"><circle class="sy-ob" cx="476" cy="68" r="12"/><path class="sy-op" d="M476 62v6M471.5 64a6.500 6.500 0 1 0 9 0"/></g><g class="sy-o o4"><circle class="sy-ob" cx="514" cy="68" r="12"/><path class="sy-op" d="M514 62v6M509.5 64a6.500 6.500 0 1 0 9 0"/></g><circle class="sy-sel" cx="438" cy="68" r="16"/>
+      <text class="sc-t3" x="438" y="94" text-anchor="middle">Router</text>
+      <g class="sy-st1"><rect class="sy-pillm" x="340" y="102" width="132" height="20" rx="10"/><circle class="sy-pmc" cx="351" cy="112" r="6"/><path class="sy-xx" d="M348.500 109.500l5 5M353.500 109.500l-5 5"/><text class="sy-pmt" x="362" y="115.500">Router sin respuesta</text></g>
+      <g class="sc-chip c1"><rect class="sc-chipb" x="340" y="102" width="112" height="20" rx="10"/><circle class="sc-chipc" cx="351" cy="112" r="6"/><path class="sc-ck3" d="M348 112l2.200 2.200 4-4.400"/><text class="sc-chipt" x="361" y="115.500">Router en línea</text></g>
+      <g class="sc-send"><rect class="sc-sendb" x="340" y="128" width="196" height="20" rx="10"/><text class="sc-sendt" x="438" y="142" text-anchor="middle">Reiniciar salida 3</text></g>
+      <g class="sc-prog"><rect class="sc-track" x="340" y="128" width="196" height="20" rx="10"/><rect class="sc-fill" x="340" y="128" width="196" height="20" rx="10"/><text class="sy-pt" x="438" y="142" text-anchor="middle">Reiniciando…</text></g>
+      <g class="sc-sent"><rect class="sc-sentb" x="340" y="128" width="196" height="20" rx="10"/><circle class="sc-sentc" cx="404" cy="138" r="6.500"/><path class="sc-ck3" d="M400.500 138l2.500 2.500 4.500-5"/><text class="sc-sentt" x="416" y="142">Reiniciada</text></g>
+      <circle class="sc-finger" cx="438" cy="74" r="8"/>
+    </g>
+  </svg>
+</div>
+                <p class="hero__note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v9"/><path d="M7.3 6.3a8 8 0 1 0 9.4 0"/></svg><span><strong>Corte físico de energía</strong>Funciona aunque el equipo esté completamente trabado y no responda a nada.</span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Qué es ---------------------------------------------------------------- -->
+<section class="section section--tight" id="producto">
+    <div class="container">
+        <h2 class="sr-only">Qué es SysPower, para quién es y qué resuelve</h2>
+        <div class="mosaic" data-reveal>
+            <div class="card card--big">
+                <p class="eyebrow">Qué es</p>
+                <h3>Un controlador y un panel web</h3>
+                <p>Un controlador con cinco salidas de 120 V a 10 A que se instala en tu sitio, y un panel web desde el que apagas, enciendes y reinicias a distancia cada equipo conectado.</p>
+                <p class="muted">El hardware va incluido en la renta, sin anticipo ni compra inicial. El corte es físico: el relé interrumpe la corriente sin pasar por el sistema del equipo.</p>
+            </div>
+            <div class="card card--md">
+                <p class="eyebrow">Para quién</p>
+                <h3>Sitios con equipos que no pueden parar</h3>
+                <p class="muted">Sucursales, oficinas y cuartos de servidores pequeños, y también integradores y sysadmins que instalan SysPower en el sitio de sus clientes.</p>
+            </div>
+            <div class="card card--md">
+                <p class="eyebrow">Qué resuelve</p>
+                <h3>Esperar a que alguien vaya a desconectarlo</h3>
+                <p class="muted">Un router trabado, un DVR congelado o un servidor sin respuesta se reinician desde el navegador, a cualquier hora, sin visitas de emergencia.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cómo funciona --------------------------------------------------------- -->
+<section class="section" id="capacidades">
+    <div class="container">
+        <header class="head" data-reveal>
+            <p class="eyebrow">Cómo funciona</p>
+            <h2>Se instala una vez y queda listo para operar</h2>
+            <p class="lede">El controlador se monta en tu sitio y cualquier usuario autorizado reinicia equipos en segundos desde el panel web, esté donde esté.</p>
+        </header>
+
+        <div data-reveal>
+            <div class="tabs" role="tablist" aria-label="Qué hace SysPower">
+                                <button class="tab" type="button" role="tab" id="tab-energia" aria-selected="true" aria-controls="panel-energia">Energía</button>
+                                <button class="tab" type="button" role="tab" id="tab-salidas" aria-selected="false" tabindex="-1" aria-controls="panel-salidas">Salidas</button>
+                                <button class="tab" type="button" role="tab" id="tab-control" aria-selected="false" tabindex="-1" aria-controls="panel-control">Control</button>
+                            </div>
+                        <div class="cap-panel" role="tabpanel" id="panel-energia" aria-labelledby="tab-energia">
+                <div class="split">
+                    <div class="split__body">
+                        <p class="eyebrow">Apagar, encender y reiniciar</p>
+                        <h3 style="font-size:clamp(1.5rem,1.4vw + 1rem,2rem)">Tres acciones, un clic, desde cualquier lugar</h3>
+                        <p class="muted">El relé corta la corriente del equipo que elijas y la restaura cuando tú decides. Funciona aunque el equipo esté trabado y no responda a nada.</p>
+                        <ul class="feat-list">
+                                                        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v9"/><path d="M7.3 6.3a8 8 0 1 0 9.4 0"/></svg></span><div><strong>Apagar: corta la energía al instante</strong><p>Corta la energía del equipo seleccionado al instante.</p></div></li>
+                                                        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.5 2 5 13.5h6L10.5 22 19 10.5h-6Z"/></svg></span><div><strong>Encender: restaura cuando estés listo</strong><p>Restaura la energía cuando estés listo para reiniciar.</p></div></li>
+                                                        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v5"/><path d="M17.6 6.4a8 8 0 1 1-11.2 0"/></svg></span><div><strong>Reiniciar: ciclo completo con un clic</strong><p>Apaga y enciende en secuencia automática con un solo clic.</p></div></li>
+                                                    </ul>
+                    </div>
+                    <div class="split__media">
+                        <figure class="win"><div class="win__bar"><span class="win__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="win__url">app.syspower.alkes.mx</span></div><div class="win__shot" style="--ar:1568 / 621"><img src="assets/img/ficha.jpg" alt="Ficha de un controlador SysPower con sus cinco puertos y los botones de energía" data-tema-img="claro" width="1568" height="621" loading="lazy" decoding="async"><img src="assets/img/ficha-oscuro.jpg" alt="Ficha de un controlador SysPower con sus cinco puertos y los botones de energía" data-tema-img="oscuro" width="1568" height="621" loading="lazy" decoding="async"></div></figure>                        <p class="cap">Ficha del controlador: puertos y botones de energía</p>
+                    </div>
+                </div>
+            </div>
+                        <div class="cap-panel" role="tabpanel" id="panel-salidas" aria-labelledby="tab-salidas" hidden>
+                <div class="split">
+                    <div class="split__body">
+                        <p class="eyebrow">Salida por salida</p>
+                        <h3 style="font-size:clamp(1.5rem,1.4vw + 1rem,2rem)">Solo se corta lo que tú indicas</h3>
+                        <p class="muted">Cada controlador tiene cinco salidas de 120 V a 10 A. Cada una alimenta un equipo con su nombre, y reinicias solo el afectado, sin tocar el resto del sitio.</p>
+                        <ul class="feat-list">
+                                                        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4.5" y="3" width="15" height="18" rx="2"/><path d="M4.5 8.5h15M4.5 14h15M8 5.8h.01M8 11.2h.01M8 17.3h.01"/></svg></span><div><strong>Cinco salidas, cada equipo con su nombre</strong><p>Router, DVR, switch, servidor: cada uno queda nombrado y listo para reinicio remoto desde el panel.</p></div></li>
+                                                        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 10V6.5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1V10l2 2v5.5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V12Z"/><path d="M8.5 12.5v3M12 12.5v3M15.5 12.5v3"/></svg></span><div><strong>Conexión por Ethernet o WiFi</strong><p>El controlador reporta al panel por cable o por WiFi; no requiere VPN ni abrir puertos hacia el exterior.</p></div></li>
+                                                        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></svg></span><div><strong>Relés industriales</strong><p>El relé interrumpe la energía directamente: no depende del sistema operativo ni de la red del equipo.</p></div></li>
+                                                    </ul>
+                    </div>
+                    <div class="split__media">
+                        <figure class="win"><div class="win__bar"><span class="win__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="win__url">app.syspower.alkes.mx</span></div><div class="win__shot" style="--ar:1568 / 621"><img src="assets/img/estado.jpg" alt="Estado en vivo de los controladores SysPower: en línea, último reporte y cada puerto" data-tema-img="claro" width="1568" height="621" loading="lazy" decoding="async"><img src="assets/img/estado-oscuro.jpg" alt="Estado en vivo de los controladores SysPower: en línea, último reporte y cada puerto" data-tema-img="oscuro" width="1568" height="621" loading="lazy" decoding="async"></div></figure>                        <p class="cap">Estado en vivo de todos tus controladores</p>
+                    </div>
+                </div>
+            </div>
+                        <div class="cap-panel" role="tabpanel" id="panel-control" aria-labelledby="tab-control" hidden>
+                <div class="split">
+                    <div class="split__body">
+                        <p class="eyebrow">Usuarios, historial y avisos</p>
+                        <h3 style="font-size:clamp(1.5rem,1.4vw + 1rem,2rem)">Quién, qué y cuándo, siempre a la vista</h3>
+                        <p class="muted">Cada persona usa su cuenta según su rol y cada acción queda registrada. Los avisos llegan a la campana del panel, los que tú elijas.</p>
+                        <ul class="feat-list">
+                                                        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><path d="M16 5.3a3.2 3.2 0 0 1 0 6.2M17.5 14.8c2.1.6 3.5 2.3 3.5 4.6"/></svg></span><div><strong>Multiusuario con roles</strong><p>Administrador, operador o visor: cada quien opera únicamente lo que su rol permite.</p></div></li>
+                                                        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1M3.5 5v4h4"/><path d="M12 7.5v5l3.2 1.9"/></svg></span><div><strong>Historial y trazabilidad</strong><p>Registro de cada acción de energía, cada cambio y cada nota, con quién, qué y cuándo.</p></div></li>
+                                                        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 9a6 6 0 1 1 12 0c0 4 1.5 5.5 2 6H4c.5-.5 2-2 2-6Z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg></span><div><strong>Avisos y notas en cada controlador</strong><p>Te avisa cuando un controlador se desconecta o vuelve y cuando alguien actúa sobre un equipo; las notas quedan en el propio controlador.</p></div></li>
+                                                    </ul>
+                    </div>
+                    <div class="split__media">
+                        <figure class="win"><div class="win__bar"><span class="win__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="win__url">app.syspower.alkes.mx</span></div><div class="win__shot" style="--ar:1568 / 621"><img src="assets/img/historial.jpg" alt="Historial de acciones de SysPower con usuario, acción y fecha" data-tema-img="claro" width="1568" height="621" loading="lazy" decoding="async"><img src="assets/img/historial-oscuro.jpg" alt="Historial de acciones de SysPower con usuario, acción y fecha" data-tema-img="oscuro" width="1568" height="621" loading="lazy" decoding="async"></div></figure>                        <p class="cap">Historial de acciones por controlador</p>
+                    </div>
+                </div>
+            </div>
+                    </div>
+
+        <div class="group" data-reveal>
+            <h3>De la instalación a la operación, en cinco pasos</h3>
+            <div class="items items--3"><div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4.5" y="3" width="15" height="18" rx="2"/><path d="M4.5 8.5h15M4.5 14h15M8 5.8h.01M8 11.2h.01M8 17.3h.01"/></svg><div><h4>1 · Se instala en tu sitio</h4><p>El controlador queda montado en el sitio y conectado a cada equipo crítico que quieras controlar.</p></div></div><div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 10V6.5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1V10l2 2v5.5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V12Z"/><path d="M8.5 12.5v3M12 12.5v3M15.5 12.5v3"/></svg><div><h4>2 · Asignas tus equipos</h4><p>Router, DVR, switch, servidor: cada uno queda nombrado y listo para reinicio remoto desde el panel.</p></div></div><div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3.5 9h17M3.5 15h17M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/></svg><div><h4>3 · Accedes desde donde estés</h4><p>Abres el panel web en tu celular o computadora, sin VPN y sin apps adicionales.</p></div></div><div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v5"/><path d="M17.6 6.4a8 8 0 1 1-11.2 0"/></svg><div><h4>4 · Reinicias con un clic</h4><p>SysPower corta físicamente la energía del equipo afectado y la restaura, sin tocar los demás.</p></div></div><div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3.5 6 1.2 1.2L7 5M3.5 12l1.2 1.2L7 11M3.5 18l1.2 1.2L7 17"/></svg><div><h4>5 · Queda registro</h4><p>El equipo arranca, el servicio se recupera y el historial registra la acción automáticamente.</p></div></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- Casos de uso ----------------------------------------------------------- -->
+<section class="section section--sunken" id="casos">
+    <div class="container">
+        <header class="head" data-reveal>
+            <p class="eyebrow">Casos de uso</p>
+            <h2>Escenarios donde SysPower marca la diferencia</h2>
+            <p class="lede">Desde restaurantes hasta oficinas y cuartos de servidores: si tienes equipos críticos conectados, SysPower los mantiene bajo control.</p>
+        </header>
+        <div class="group" data-reveal>
+            <div class="items items--3"><div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 4h2.2l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h8.3a1.5 1.5 0 0 0 1.5-1.2L21 8H6"/><circle cx="9.5" cy="20" r="1.4"/><circle cx="17.5" cy="20" r="1.4"/></svg><div><h4>Restaurante con sucursales: DVR de seguridad congelado</h4><p>El dueño lo reinicia desde el celular en segundos, sin mover a nadie. Sin traslado y sin tiempo ciego.</p></div></div><div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16"/><path d="M15 10h3a2 2 0 0 1 2 2v9M8 7h3M8 11h3M8 15h3M2.5 21h19"/></svg><div><h4>Oficina corporativa: router o switch congelado a las 8 am</h4><p>El sysadmin lo reinicia desde casa antes de salir. La oficina está lista cuando llega el equipo.</p></div></div><div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="4" width="17" height="6.5" rx="1.5"/><rect x="3.5" y="13.5" width="17" height="6.5" rx="1.5"/><path d="M7 7.2h.01M7 16.8h.01"/></svg><div><h4>MikroTik o servidor pequeño: equipo trabado sin respuesta a SSH</h4><p>Ningún software llega a un equipo congelado. SysPower corta la energía físicamente y la restaura.</p></div></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- Por qué SysPower --------------------------------------------------------- -->
+<section class="section" id="resultados">
+    <div class="container">
+        <header class="head" data-reveal>
+            <p class="eyebrow">Por qué SysPower</p>
+            <h2>Cada minuto sin respuesta cuesta</h2>
+            <p class="lede">Un router trabado, un DVR congelado, un servidor sin respuesta. Mientras alguien llega a desconectarlo y volverlo a conectar, tu operación está detenida y tus clientes esperan.</p>
+        </header>
+
+        <div class="why" data-reveal>
+            <div class="why__col">
+                <p class="eyebrow">Con SysPower</p>
+                <h3>Control real desde el primer día</h3>
+                <p class="muted">Lo instalas una vez y queda listo para operar.</p>
+                <ul class="checks">
+                    <li><div><strong>Sin esperar a un técnico</strong><p>Reinicias en segundos, a cualquier hora.</p></div></li>
+                    <li><div><strong>Cero traslados por reinicios de rutina</strong><p>Los ciclos de energía rutinarios se hacen desde el panel.</p></div></li>
+                    <li><div><strong>Control preciso</strong><p>Solo el equipo que elegiste, salida por salida.</p></div></li>
+                    <li><div><strong>Tu cliente no nota la caída</strong><p>Recuperas el servicio antes de que el impacto se sienta.</p></div></li>
+                    <li><div><strong>Usuarios autorizados sin depender de terceros</strong><p>Acceso multiusuario con roles; cada persona usa su cuenta según sus permisos.</p></div></li>
+                    <li><div><strong>Historial auditable por cuenta</strong><p>Quién, qué y cuándo de cada acción.</p></div></li>
+                </ul>
+            </div>
+            <div class="why__col">
+                <p class="eyebrow">Sin control remoto</p>
+                <p class="muted">Lo que pasa hoy cuando un equipo se congela.</p>
+                <div>
+                                        <details class="disc" open>
+                        <summary class="disc__sum"><span class="disc__t">«Manda a alguien a reiniciarlo»</span><svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+                        <div class="disc__body"><p>El equipo falló y la solución es esperar a que un técnico llegue, desconecte el cable y lo vuelva a enchufar. Cuesta caro y tarda horas.</p></div>
+                    </details>
+                                        <details class="disc">
+                        <summary class="disc__sum"><span class="disc__t">«Pide a alguien que lo desconecte»</span><svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+                        <div class="disc__body"><p>El empleado de turno desconecta el cable equivocado. Ahora hay dos problemas en vez de uno, y nadie sabe bien qué apagó.</p></div>
+                    </details>
+                                        <details class="disc">
+                        <summary class="disc__sum"><span class="disc__t">Tiempo muerto real</span><svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+                        <div class="disc__body"><p>Mientras el equipo no vuelve, se caen ventas, cámaras, acceso a sistemas y atención al cliente: todo lo que depende de esa conexión.</p></div>
+                    </details>
+                                        <details class="disc">
+                        <summary class="disc__sum"><span class="disc__t">Fuera de horario no hay solución</span><svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+                        <div class="disc__body"><p>El equipo se congela un sábado a la medianoche. Sin control remoto, el problema dura hasta que alguien pueda ir el lunes.</p></div>
+                    </details>
+                                    </div>
+                <div class="dif">
+                    <p class="eyebrow">La diferencia SysPower</p>
+                    <p class="lede">No ofrecemos solo un aparato, ofrecemos el servicio completo: controlador, panel, soporte y actualizaciones, con soporte directo del equipo que lo desarrolla.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="facts" data-reveal>
+            <div class="fact"><b>5 salidas</b><span>120 V a 10 A cada una.</span></div>
+            <div class="fact"><b>Corte físico</b><span>Por relé, no por software.</span></div>
+            <div class="fact"><b>Sin VPN</b><span>Desde cualquier navegador.</span></div>
+            <div class="fact"><b>Hardware incluido</b><span>En la renta, sin anticipo.</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- Informes --------------------------------------------------------------- -->
+<section class="section section--sunken" id="informes">
+    <div class="container">
+        <header class="head" data-reveal>
+            <p class="eyebrow">Informes</p>
+            <h2>Cuéntanos tu sitio y te enviamos los informes</h2>
+            <p class="lede">SysPower se renta con el hardware incluido, sin anticipo ni compra inicial del equipo. Dinos cuántos sitios y equipos quieres controlar y te enviamos la propuesta.</p>
+        </header>
+        <div class="team" data-reveal>
+            <div>
+                <h3>El servicio completo, en una sola renta</h3>
+                <p>El controlador con relés industriales, el panel web, el historial, el soporte y las actualizaciones, con garantía de hardware. Escríbenos, llámanos o usa WhatsApp: respondemos en horario hábil.</p>
+            </div>
+            <div class="team__links">
+                <a class="btn btn--primary" href="mailto:soporte@alkes.mx?subject=Informes%20de%20SysPower"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 7.6 5.3a1.6 1.6 0 0 0 1.8 0L20.5 7"/></svg>Pedir informes</a>
+                <a class="btn btn--line" href="tel:+523339460097"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 3h3l2 5-2.5 1.5a12 12 0 0 0 5 5L16 12l5 2v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4 5.2 2 2 0 0 1 6 3Z"/></svg>333 946 0097</a>
+                <a class="btn btn--line" href="https://wa.me/523339460097" target="_blank" rel="noopener">WhatsApp<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+            </div>
+        </div>
+        <ul class="plan-foot" data-reveal>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Hardware incluido en la renta</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Sin anticipo ni compra inicial</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Panel web, historial, soporte y actualizaciones</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Garantía de hardware</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Preguntas frecuentes -------------------------------------------------- -->
+<section class="section" id="preguntas">
+    <div class="container">
+        <div class="faq">
+            <div class="faq__intro" data-reveal>
+                <p class="eyebrow">Preguntas frecuentes</p>
+                <h2>Lo que más nos preguntan sobre SysPower</h2>
+                <p class="muted">¿Tienes otra duda? Escríbenos a <a href="mailto:soporte@alkes.mx">soporte@alkes.mx</a>.</p>
+            </div>
+            <div class="faq__list" data-reveal>
+                                <details class="disc" open>
+                    <summary class="disc__sum"><span class="disc__t">¿Qué es SysPower?</span><svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+                    <div class="disc__body"><p>Un controlador que se instala en tu sitio, con cinco salidas de 120 V a 10 A, y un panel web desde el que apagas, enciendes y reinicias a distancia los equipos conectados: routers, DVR, switches y servidores pequeños.</p></div>
+                </details>
+                                <details class="disc">
+                    <summary class="disc__sum"><span class="disc__t">¿Qué pasa si un equipo está completamente trabado y no responde?</span><svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+                    <div class="disc__body"><p>Es el escenario donde SysPower más ayuda. El corte es físico: el relé interrumpe la corriente del equipo sin pasar por su sistema. No importa si está congelado o colgado.</p></div>
+                </details>
+                                <details class="disc">
+                    <summary class="disc__sum"><span class="disc__t">¿Cuánto cuesta?</span><svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+                    <div class="disc__body"><p>SysPower no tiene planes publicados. Escríbenos a soporte@alkes.mx o llama al 333 946 0097: nos cuentas cuántos sitios y equipos quieres controlar y te enviamos los informes.</p></div>
+                </details>
+                                <details class="disc">
+                    <summary class="disc__sum"><span class="disc__t">¿Qué incluye el servicio?</span><svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+                    <div class="disc__body"><p>El controlador, el panel web, el historial, el soporte y las actualizaciones. El hardware va incluido en la renta, sin anticipo ni compra inicial del equipo, y tiene garantía.</p></div>
+                </details>
+                                <details class="disc">
+                    <summary class="disc__sum"><span class="disc__t">¿Qué necesita el sitio para la instalación?</span><svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+                    <div class="disc__body"><p>Una toma eléctrica estándar de 120 V, conexión a internet por cable (Ethernet) o WiFi y espacio para el controlador cerca de los equipos. No requiere VPN ni abrir puertos hacia el exterior.</p></div>
+                </details>
+                                <details class="disc">
+                    <summary class="disc__sum"><span class="disc__t">¿Qué pasa si se cae el internet del sitio?</span><svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+                    <div class="disc__body"><p>El controlador recibe las órdenes cuando reporta al panel. Si el enlace se cae, no llegan órdenes nuevas hasta que se restablece; entonces recuperas el control desde el panel.</p></div>
+                </details>
+                                <details class="disc">
+                    <summary class="disc__sum"><span class="disc__t">¿Qué pasa si se va la luz en el sitio?</span><svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+                    <div class="disc__body"><p>Si se va la luz, el sistema se reinicia solo cuando vuelve la energía.</p></div>
+                </details>
+                                <details class="disc">
+                    <summary class="disc__sum"><span class="disc__t">¿Se puede operar el panel sin saber nada técnico?</span><svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+                    <div class="disc__body"><p>Sí. Ves tus equipos con su nombre, eliges cuál reiniciar y listo. Cada usuario opera según su rol: administrador, operador o visor.</p></div>
+                </details>
+                                <details class="disc">
+                    <summary class="disc__sum"><span class="disc__t">¿Queda registro de quién hizo qué?</span><svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+                    <div class="disc__body"><p>Sí. Cada acción de energía, cada cambio y cada nota queda en el historial del controlador, con quién, qué y cuándo.</p></div>
+                </details>
+                                <details class="disc">
+                    <summary class="disc__sum"><span class="disc__t">¿Qué pasa si el hardware se daña?</span><svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+                    <div class="disc__body"><p>El servicio incluye garantía de hardware. Si el controlador falla, lo atendemos para restablecer la operación.</p></div>
+                </details>
+                                <details class="disc">
+                    <summary class="disc__sum"><span class="disc__t">Soy integrador o sysadmin. ¿Cómo encaja SysPower en mis instalaciones?</span><svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+                    <div class="disc__body"><p>Lo instalas en el sitio del cliente y queda disponible para su operación diaria, con acceso multiusuario y roles. Para conocer el modelo de distribución, escríbenos.</p></div>
+                </details>
+                                <details class="disc">
+                    <summary class="disc__sum"><span class="disc__t">¿Puedo probarlo?</span><svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+                    <div class="disc__body"><p>Sí, con el demo y sus credenciales de prueba. Su controlador es de ejemplo, sin un equipo real conectado.</p></div>
+                </details>
+                            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Confianza ------------------------------------------------------------- -->
+<section class="section section--sunken" id="confianza">
+    <div class="container">
+        <header class="head" data-reveal>
+            <p class="eyebrow">Confianza</p>
+            <h2>Un equipo con nombre, correo y teléfono</h2>
+            <p class="lede">SysPower es un producto de Alkes. Nuestro equipo desarrolla, opera y da soporte al mismo sistema.</p>
+        </header>
+        <div class="tiles" data-reveal>
+            <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v9"/><path d="M7.3 6.3a8 8 0 1 0 9.4 0"/></svg><h3>Corte físico, no lógico</h3><p>El relé interrumpe la energía directamente, sin depender del sistema operativo ni de la red del equipo.</p></div>
+            <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4.5" y="3" width="15" height="18" rx="2"/><path d="M4.5 8.5h15M4.5 14h15M8 5.8h.01M8 11.2h.01M8 17.3h.01"/></svg><h3>Salida por salida</h3><p>Reinicias solo el equipo afectado, sin cortar nada más del sitio.</p></div>
+            <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 5 6v5.5c0 4.2 2.9 7.6 7 9.5 4.1-1.9 7-5.3 7-9.5V6Z"/><path d="m9 12 2 2 4-4"/></svg><h3>Producto terminado</h3><p>Con garantía, actualizaciones y soporte incluidos en la renta.</p></div>
+            <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><h3>Permisos por rol</h3><p>Administrador, operador o visor: cada persona opera lo que su rol permite.</p></div>
+        </div>
+        <div class="team" data-reveal>
+            <div>
+                <h3>Soporte del equipo que construye SysPower</h3>
+                <p>Nuestro equipo desarrolla, opera y da soporte a SysPower de principio a fin. Para soporte técnico, una demostración guiada o un módulo a la medida, hablas directamente con el equipo que construye el sistema.</p>
+            </div>
+            <div class="team__links">
+                <a class="btn btn--primary" href="mailto:soporte@alkes.mx?subject=Demostraci%C3%B3n%20guiada%20de%20SysPower"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 7.6 5.3a1.6 1.6 0 0 0 1.8 0L20.5 7"/></svg>Escribir al equipo</a>
+                <a class="btn btn--line" href="tel:+523339460097"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 3h3l2 5-2.5 1.5a12 12 0 0 0 5 5L16 12l5 2v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4 5.2 2 2 0 0 1 6 3Z"/></svg>333 946 0097</a>
+                <a class="btn btn--line" href="https://wa.me/523339460097" target="_blank" rel="noopener">WhatsApp<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Novedades ------------------------------------------------------------- -->
+<section class="section" id="novedades">
+    <div class="container narrow">
+        <header class="head" data-reveal>
+            <p class="eyebrow">Novedades</p>
+            <h2>El panel se mueve, y queda por escrito</h2>
+            <p class="lede">Historial público de versiones: lo que se entregó, cuándo y qué cambia en tu operación diaria.</p>
+        </header>
+        <div data-reveal>
+                        <details class="disc disc--latest" open>
+                <summary class="disc__sum">
+                    <span class="disc__v">v2.2.0</span>
+                    <span class="disc__t">Controlador inactivo, solo consulta</span>
+                    <span class="disc__d">26 oct 2026</span>
+                    <svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>                </summary>
+                <div class="disc__body">
+                    <ul>
+                    <li><div><strong>Sin acciones por error</strong><p>Un controlador inactivo se puede consultar, imprimir y enviar, pero no encender, apagar, reiniciar ni modificar.</p></div></li>
+                    </ul>
+                </div>
+            </details>
+            <details class="disc">
+                <summary class="disc__sum">
+                    <span class="disc__v">v2.1.6</span>
+                    <span class="disc__t">Foto de perfil y logo más grandes</span>
+                    <span class="disc__d">23 oct 2026</span>
+                    <svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>                </summary>
+                <div class="disc__body">
+                    <ul>
+                    <li><div><strong>Imágenes de mayor tamaño</strong><p>La foto de perfil y el logo de la empresa aceptan archivos más pesados.</p></div></li>
+                    <li><div><strong>Archivos mejor protegidos</strong><p>Las carpetas de archivos ya no se pueden abrir sin iniciar sesión.</p></div></li>
+                    </ul>
+                </div>
+            </details>
+            <details class="disc">
+                <summary class="disc__sum">
+                    <span class="disc__v">v2.1.5</span>
+                    <span class="disc__t">El visor de PDF funciona en el celular</span>
+                    <span class="disc__d">16 oct 2026</span>
+                    <svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>                </summary>
+                <div class="disc__body">
+                    <ul>
+                    <li><div><strong>PDF dentro del mismo visor</strong><p>En Chrome para Android y otros navegadores sin visor propio, el PDF ahora se ve en el modal, página por página, con su botón Descargar.</p></div></li>
+                    </ul>
+                </div>
+            </details>
+            <details class="disc">
+                <summary class="disc__sum">
+                    <span class="disc__v">v2.1.4</span>
+                    <span class="disc__t">«Recuérdame» en hasta 5 equipos</span>
+                    <span class="disc__d">16 oct 2026</span>
+                    <svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>                </summary>
+                <div class="disc__body">
+                    <ul>
+                    <li><div><strong>Cada equipo se recuerda por separado</strong><p>Puedes recordar hasta 5 equipos a la vez; al recordar el sexto se olvida el que lleva más tiempo sin usarse.</p></div></li>
+                    <li><div><strong>Lista en Mi perfil</strong><p>En Mi perfil › Seguridad ves tus equipos recordados con navegador, sistema, IP y último uso, y puedes olvidar el que quieras.</p></div></li>
+                    <li><div><strong>Más seguro</strong><p>Cerrar sesión olvida solo ese equipo, y cambiar la contraseña o dar de baja a un usuario olvida sus equipos recordados. Cada persona inicia sesión una vez más y vuelve a marcar «Recordarme».</p></div></li>
+                    </ul>
+                </div>
+            </details>
+            <details class="disc">
+                <summary class="disc__sum">
+                    <span class="disc__v">v2.1.3</span>
+                    <span class="disc__t">Recuperar contraseña y acceso desde el celular</span>
+                    <span class="disc__d">16 oct 2026</span>
+                    <svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>                </summary>
+                <div class="disc__body">
+                    <ul>
+                    <li><div><strong>Recupera tu contraseña desde el acceso</strong><p>Escribes tu correo, recibes un código de 6 dígitos que vence a los 15 minutos y con él pones tu contraseña nueva.</p></div></li>
+                    <li><div><strong>Acceso cómodo en el celular</strong><p>La pantalla de acceso se ajusta a cualquier tamaño, en vertical y en horizontal, sin hacer scroll ni tapar la tarjeta con el teclado.</p></div></li>
+                    </ul>
+                </div>
+            </details>
+            <details class="disc">
+                <summary class="disc__sum">
+                    <span class="disc__v">v2.1.2</span>
+                    <span class="disc__t">Tablas con el mismo control de orden</span>
+                    <span class="disc__d">15 oct 2026</span>
+                    <svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>                </summary>
+                <div class="disc__body">
+                    <ul>
+                    <li><div><strong>Un solo control de orden</strong><p>El modal de selección ordena con el mismo menú que el resto de las tablas.</p></div></li>
+                    </ul>
+                </div>
+            </details>
+            <details class="disc">
+                <summary class="disc__sum">
+                    <span class="disc__v">v2.1.1</span>
+                    <span class="disc__t">Botones iguales y en el mismo orden en todos los módulos</span>
+                    <span class="disc__d">15 oct 2026</span>
+                    <svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>                </summary>
+                <div class="disc__body">
+                    <ul>
+                    <li><div><strong>Cada botón, siempre del mismo color</strong><p>Guardar y Borrador en azul, Procesar en verde, Cancelar y Eliminar en rojo, todas las autorizaciones en amarillo, Imprimir y Regresar en gris. Los mismos colores en todos los módulos.</p></div></li>
+                    <li><div><strong>Siempre en el mismo orden</strong><p>De izquierda a derecha, por relevancia: primero guardar, luego las acciones, las cancelaciones y las autorizaciones. Al extremo derecho van Enviar, Información y Regresar.</p></div></li>
+                    <li><div><strong>Sin menús escondidos</strong><p>Todos los botones están a la vista, uno por uno, rellenos y con su ícono. Ya no hay botones de solo contorno ni menús «Más».</p></div></li>
+                    <li><div><strong>Mejor en el celular</strong><p>En pantallas chicas los botones muestran solo su ícono para que quepan, y la acción principal conserva su texto.</p></div></li>
+                    <li><div><strong>El botón de correo, más corto</strong><p>Ahora se llama simplemente Enviar.</p></div></li>
+                    </ul>
+                </div>
+            </details>
+            <details class="disc">
+                <summary class="disc__sum">
+                    <span class="disc__v">v2.1.0</span>
+                    <span class="disc__t">Envía la ficha de un controlador por correo</span>
+                    <span class="disc__d">15 oct 2026</span>
+                    <svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>                </summary>
+                <div class="disc__body">
+                    <ul>
+                    <li><div><strong>De la ficha al correo</strong><p>Con el botón Enviar mandas la ficha de un controlador: sus puertos, comandos y conexiones recientes. El PDF va como archivo adjunto.</p></div></li>
+                    <li><div><strong>Revisas antes de enviar</strong><p>Una ventana te deja escribir los destinatarios, ajustar el asunto y el mensaje, y elegir qué secciones incluye el PDF.</p></div></li>
+                    <li><div><strong>Con el nombre de tu empresa</strong><p>El correo sale a nombre de tu empresa, con tu firma y tu pie. Las respuestas llegan al correo que elijas.</p></div></li>
+                    <li><div><strong>Con tu propio servidor de correo</strong><p>Si lo prefieres, configura el servidor de correo de tu empresa para que los envíos salgan desde tu dominio y sin el límite de uso justo.</p></div></li>
+                    </ul>
+                </div>
+            </details>
+            <details class="disc">
+                <summary class="disc__sum">
+                    <span class="disc__v">v2.0.3</span>
+                    <span class="disc__t">Formularios más claros, con ícono en cada campo</span>
+                    <span class="disc__d">14 oct 2026</span>
+                    <svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>                </summary>
+                <div class="disc__body">
+                    <ul>
+                    <li><div><strong>Un ícono en cada campo</strong><p>Cada dato que capturas lleva su ícono al lado izquierdo, para reconocer de un vistazo qué se pide.</p></div></li>
+                    <li><div><strong>Nombre y campo en la misma línea</strong><p>El nombre del campo queda a la izquierda y el campo a su derecha, en todos los formularios y ventanas.</p></div></li>
+                    <li><div><strong>Tarjetas con título e ícono</strong><p>Cada bloque de una pantalla se identifica con su ícono y su título.</p></div></li>
+                    <li><div><strong>Configuración y datos para facturar con el mismo orden</strong><p>Las pantallas de Configuración, suscripción y datos para facturar siguen el mismo acomodo que el resto del sistema.</p></div></li>
+                    </ul>
+                </div>
+            </details>
+            <details class="disc">
+                <summary class="disc__sum">
+                    <span class="disc__v">v2.0.2</span>
+                    <span class="disc__t">Ficha del controlador en PDF</span>
+                    <span class="disc__d">14 oct 2026</span>
+                    <svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>                </summary>
+                <div class="disc__body">
+                    <ul>
+                    <li><div><strong>Un documento por controlador</strong><p>Su estado en línea, firmware, última conexión y tiempo de funcionamiento, con el estado de cada puerto y el equipo que alimenta.</p></div></li>
+                    <li><div><strong>Comandos, conexiones y notas</strong><p>Si quieres, también sus últimos comandos de energía, sus últimas conexiones y las notas del controlador. No incluye las credenciales del dispositivo.</p></div></li>
+                    <li><div><strong>Tú eliges qué incluye</strong><p>El botón Imprimir, en la ficha del controlador, abre una ventana donde marcas las secciones y ves cuántos elementos tiene cada una. Recuerda tu última elección.</p></div></li>
+                    <li><div><strong>Se ve sin salir de la pantalla</strong><p>El PDF se abre en una ventana, con la opción de descargarlo. Arriba lleva el logo y el nombre de tu empresa; SysPower aparece solo como un crédito discreto al pie.</p></div></li>
+                    </ul>
+                </div>
+            </details>
+            <details class="disc">
+                <summary class="disc__sum">
+                    <span class="disc__v">v2.0.1</span>
+                    <span class="disc__t">Una cuenta, un usuario y un controlador</span>
+                    <span class="disc__d">13 oct 2026</span>
+                    <svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>                </summary>
+                <div class="disc__body">
+                    <ul>
+                    <li><div><strong>Cada cuenta incluye su controlador</strong><p>Una cuenta corresponde a una empresa, un usuario y un controlador. Cada controlador nuevo es una cuenta nueva.</p></div></li>
+                    <li><div><strong>Sin roles ni módulo de usuarios</strong><p>El usuario de la cuenta tiene todos los permisos, así que no hay nada que configurar.</p></div></li>
+                    </ul>
+                </div>
+            </details>
+            <details class="disc">
+                <summary class="disc__sum">
+                    <span class="disc__v">v2.0.0</span>
+                    <span class="disc__t">Panel renovado, estado en vivo, avisos y notas en cada controlador</span>
+                    <span class="disc__d">12 oct 2026</span>
+                    <svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>                </summary>
+                <div class="disc__body">
+                    <ul>
+                    <li><div><strong>Panel renovado de punta a punta</strong><p>El encabezado, el menú y el pie se quedan fijos mientras trabajas, y el panel se usa igual de cómodo en el celular que en la computadora. Tema claro, oscuro o automático, 20 colores de énfasis y un modo compacto.</p></div></li>
+                    <li><div><strong>Estado en vivo</strong><p>Todos tus controladores en una sola pantalla: si están en línea, cuándo reportaron por última vez y cómo está cada puerto. Se actualiza sola cada 10 segundos y los que están fuera de línea salen primero.</p></div></li>
+                    <li><div><strong>Avisos en la campana, los que tú elijas</strong><p>Te avisa cuando un controlador se desconecta o vuelve, cuando alguien apaga, enciende o reinicia un equipo y cuando dejan una nota. Un interruptor por tipo de aviso decide cuáles recibes.</p></div></li>
+                    <li><div><strong>Notas en cada controlador</strong><p>Qué equipo alimenta cada puerto o qué se hizo en la última visita queda escrito en el propio controlador, como una conversación. Se envía con Enter.</p></div></li>
+                    <li><div><strong>La ficha del controlador, completa</strong><p>Sus puertos con el estado ordenado y el real, botones de energía que solo se habilitan cuando tienen sentido, su conexión y su historial en línea de tiempo. Se imprime como documento.</p></div></li>
+                    <li><div><strong>Un dashboard que dice qué atender</strong><p>Controladores en línea y fuera de línea, acciones de energía del día, equipos encendidos y la actividad reciente, cada uno con su acceso directo.</p></div></li>
+                    <li><div><strong>Búsqueda en todo el panel</strong><p>Escribe un controlador, el nombre de un equipo o un usuario en la barra de arriba, desde cualquier pantalla. Solo aparece lo que tú puedes abrir.</p></div></li>
+                    <li><div><strong>Manual de usuario dentro del panel</strong><p>La ayuda se abre en la sección de la pantalla donde estás, desde el menú de tu nombre.</p></div></li>
+                    <li><div><strong>Más seguridad</strong><p>Se reforzó la protección de las sesiones y de cada acción, y los permisos de cada rol se revisan en todas las pantallas.</p></div></li>
+                    </ul>
+                </div>
+            </details>
+            <details class="disc">
+                <summary class="disc__sum">
+                    <span class="disc__v">v1.0.0</span>
+                    <span class="disc__t">Primera versión de SysPower</span>
+                    <span class="disc__d">jun 2026</span>
+                    <svg class="disc__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>                </summary>
+                <div class="disc__body">
+                    <ul>
+                    <li><div><strong>Apaga, enciende y reinicia a distancia</strong><p>Desde el panel ordenas el cambio de un equipo del sitio, como un router, un DVR, un switch o un servidor.</p></div></li>
+                    <li><div><strong>Un controlador por sitio</strong><p>Cada controlador tiene 5 puertos, y cada puerto alimenta un equipo. El controlador aplica la orden en su siguiente reporte.</p></div></li>
+                    <li><div><strong>Alta con número de serie</strong><p>Registras tu controlador escribiendo su número de serie.</p></div></li>
+                    <li><div><strong>Varias empresas</strong><p>Cada empresa ve solo sus controladores.</p></div></li>
+                    </ul>
+                </div>
+            </details>
+
+        </div>
+    </div>
+</section>
+
+<!-- Cierre ---------------------------------------------------------------- -->
+<section class="section section--tight">
+    <div class="container">
+        <div class="cta" data-reveal>
+            <div>
+                <p class="eyebrow">Empieza hoy</p>
+                <h2>¿Listo para tomar el control de tus equipos críticos?</h2>
+                <p class="lede">Entra al demo con las credenciales de prueba, o escríbenos y te enviamos los informes para tu sitio.</p>
+            </div>
+            <div class="cta__act">
+                <a class="btn btn--cta btn--lg" href="mailto:soporte@alkes.mx?subject=Informes%20de%20SysPower"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 7.6 5.3a1.6 1.6 0 0 0 1.8 0L20.5 7"/></svg>Pedir informes</a>
+                <a class="btn btn--line btn--lg" href="https://app.syspower.alkes.mx" data-open-demo><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M10.5 9 15 12l-4.5 3Z"/></svg>Probar el demo</a>
+                <a class="link" href="mailto:soporte@alkes.mx?subject=Demostraci%C3%B3n%20guiada%20de%20SysPower">Agendar demostración guiada<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contacto -------------------------------------------------------------- -->
+<section class="section section--sunken" id="contacto">
+    <div class="container">
+        <header class="head" data-reveal>
+            <p class="eyebrow">Contacto</p>
+            <h2>Hablemos</h2>
+            <p class="lede">Informes, demostraciones guiadas, soporte técnico o integración de módulos adicionales. Tu mensaje llega a una bandeja real.</p>
+        </header>
+        <div class="contact" data-reveal>
+            <a class="contact__item" href="mailto:soporte@alkes.mx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 7.6 5.3a1.6 1.6 0 0 0 1.8 0L20.5 7"/></svg><span class="contact__k">Correo</span><span class="contact__v">soporte@alkes.mx</span><span class="contact__d">Respuesta en horario hábil.</span></a>
+            <a class="contact__item" href="tel:+523339460097"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 3h3l2 5-2.5 1.5a12 12 0 0 0 5 5L16 12l5 2v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4 5.2 2 2 0 0 1 6 3Z"/></svg><span class="contact__k">Teléfono</span><span class="contact__v">333 946 0097</span><span class="contact__d">Para informes y demostraciones guiadas.</span></a>
+            <a class="contact__item" href="https://wa.me/523339460097" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 3h3l2 5-2.5 1.5a12 12 0 0 0 5 5L16 12l5 2v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4 5.2 2 2 0 0 1 6 3Z"/></svg><span class="contact__k">WhatsApp</span><span class="contact__v">333 946 0097</span><span class="contact__d">Escríbenos por mensaje.</span></a>
+            <a class="contact__item" href="https://app.syspower.alkes.mx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3.5h4.5a1.5 1.5 0 0 1 1.5 1.5v14a1.5 1.5 0 0 1-1.5 1.5H14"/><path d="M4 12h11M11.5 8.5 15 12l-3.5 3.5"/></svg><span class="contact__k">Acceso</span><span class="contact__v">app.syspower.alkes.mx</span><span class="contact__d">Entra a tu panel de SysPower.</span></a>
+        </div>
+        <div class="redes" data-reveal>
+            <span class="redes__k">Síguenos</span>
+                        <a href="https://www.facebook.com/alkes.mx" target="_blank" rel="noopener">Facebook<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+                        <a href="https://www.instagram.com/alkes.mx" target="_blank" rel="noopener">Instagram<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+                        <a href="https://www.linkedin.com/company/alkes-mx" target="_blank" rel="noopener">LinkedIn<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+                        <a href="https://www.tiktok.com/@alkes.mx" target="_blank" rel="noopener">TikTok<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+                    </div>
+    </div>
+</section>
+
+<!-- Ecosistema ------------------------------------------------------------ -->
+<section class="section section--tight" id="ecosistema">
+    <div class="container">
+        <header class="head" data-reveal>
+            <p class="eyebrow">Ecosistema Alkes</p>
+            <h2>SysPower no está solo</h2>
+            <p class="lede">Cinco productos desarrollados, alojados y operados por Alkes. Mismo soporte, misma casa.</p>
+        </header>
+        <div class="eco-grid" data-reveal><a class="eco-card" href="https://smartpend.alkes.mx"><div><b>SmartPend</b><span>Pendientes y proyectos</span></div></a><a class="eco-card" href="https://geocheck.alkes.mx"><div><b>GeoCheck</b><span>Asistencia por ubicación</span></div></a><a class="eco-card" href="https://mantis.alkes.mx"><div><b>Mantis</b><span>Mantenimiento de activos</span></div></a><div class="eco-card" aria-current="page"><div><b>SysPower</b><span>Estás aquí</span></div></div><a class="eco-card" href="https://erp.alkes.mx"><div><b>Alkes ERP</b><span>Gestión empresarial y CFDI</span></div></a></div>    </div>
+</section>
+
+</main>
+
+<footer class="footer">
+    <div class="container footer__top">
+        <div class="footer__brand">
+            <span class="brand"><img class="logo logo--claro" src="assets/img/logo.png" alt="" width="34" height="34"><img class="logo logo--oscuro" src="assets/img/logo-blanco.png" alt="" width="34" height="34"><span>SysPower</span></span>
+            <p>Controlador instalado en tu sitio con control remoto por panel web. Reinicia físicamente routers, DVR, switches y servidores en segundos, desde cualquier lugar, sin necesitar a nadie en sitio.</p>
+        </div>
+        <div class="footer__cols">
+            <div class="footer__col">
+                <h2 class="footer__h">Producto</h2>
+                <ul>
+                    <li><a href="#producto">Qué es</a></li>
+                    <li><a href="#capacidades">Cómo funciona</a></li>
+                    <li><a href="#casos">Casos de uso</a></li>
+                    <li><a href="#informes">Informes</a></li>
+                    <li><a href="#preguntas">Preguntas frecuentes</a></li>
+                    <li><a href="#novedades">Novedades</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h2 class="footer__h">Accesos</h2>
+                <ul>
+                    <li><a href="https://app.syspower.alkes.mx">Iniciar sesión</a></li>
+                    <li><a href="https://app.syspower.alkes.mx" data-open-demo>Probar el demo</a></li>
+                    <li><a href="mailto:soporte@alkes.mx?subject=Informes%20de%20SysPower">Pedir informes</a></li>
+                    <li><a href="https://alkes.mx">Alkes</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h2 class="footer__h">Legal</h2>
+                <ul>
+                    <li><a href="/terminos.html">Términos y condiciones</a></li>
+                    <li><a href="/privacidad.html">Aviso de privacidad</a></li>
+                    <li><a href="/cookies.html">Cookies</a></li>
+                    <li><a href="/encargo-de-datos.html">Tratamiento de datos</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h2 class="footer__h">Síguenos</h2>
+                <ul>
+                                        <li><a href="https://www.facebook.com/alkes.mx" target="_blank" rel="noopener">Facebook</a></li>
+                                        <li><a href="https://www.instagram.com/alkes.mx" target="_blank" rel="noopener">Instagram</a></li>
+                                        <li><a href="https://www.linkedin.com/company/alkes-mx" target="_blank" rel="noopener">LinkedIn</a></li>
+                                        <li><a href="https://www.tiktok.com/@alkes.mx" target="_blank" rel="noopener">TikTok</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="footer__bot">
+            <p>© 2026 Alkes. SysPower es un producto de Alkes. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+<dialog id="demoDialog" aria-labelledby="demoTitulo"><div class="dlg"><h2 id="demoTitulo">Acceso al demo</h2><p>Entra a la empresa de demostración con estas credenciales. Su controlador es de ejemplo: no hay un equipo real conectado.</p><dl class="dlg__creds"><div><dt>Usuario</dt><dd>demo@alkes.mx</dd></div><div><dt>Contraseña</dt><dd>Demo@Alkes2026</dd></div></dl><p>Para una demostración guiada escríbenos a <a href="mailto:soporte@alkes.mx?subject=Demostraci%C3%B3n%20guiada%20de%20SysPower">soporte@alkes.mx</a>, llama al <a href="tel:+523339460097">333 946 0097</a> o usa <a href="https://wa.me/523339460097" target="_blank" rel="noopener">WhatsApp</a>.</p><div class="dlg__foot"><a class="btn btn--primary" href="https://app.syspower.alkes.mx" target="_blank" rel="noopener">Ir a la app<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a><button class="btn btn--line" type="button" data-close-demo>Cerrar</button></div></div></dialog>
+<script src="assets/js/syspower.js" defer></script>
+</body>
+</html>
